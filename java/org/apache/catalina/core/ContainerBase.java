@@ -433,7 +433,7 @@ public abstract class ContainerBase extends LifecycleMBeanBase
     @Override
     public void setCluster(Cluster cluster) {
 
-        Cluster oldCluster = null;
+        Cluster oldCluster;
         Lock writeLock = clusterLock.writeLock();
         writeLock.lock();
         try {
