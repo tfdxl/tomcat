@@ -733,6 +733,7 @@ public class HostConfig implements LifecycleListener {
 
         for (int i = 0; i < files.length; i++) {
 
+            //目录名字不能为META-INF web-inf
             if (files[i].equalsIgnoreCase("META-INF"))
                 continue;
             if (files[i].equalsIgnoreCase("WEB-INF"))
