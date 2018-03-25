@@ -568,7 +568,7 @@ public class HostConfig implements LifecycleListener {
         Context context = null;
         boolean isExternalWar = false;
         boolean isExternal = false;
-        File expandedDocBase = null;
+        File expandedDocBase;
 
         try (FileInputStream fis = new FileInputStream(contextXml)) {
             synchronized (digesterLock) {
