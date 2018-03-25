@@ -17,12 +17,12 @@
 
 package org.apache.catalina.mapper;
 
-import javax.servlet.http.MappingMatch;
-
 import org.apache.catalina.Context;
 import org.apache.catalina.Host;
 import org.apache.catalina.Wrapper;
 import org.apache.tomcat.util.buf.MessageBytes;
+
+import javax.servlet.http.MappingMatch;
 
 /**
  * Mapping data.
@@ -31,11 +31,22 @@ import org.apache.tomcat.util.buf.MessageBytes;
  */
 public class MappingData {
 
+    //匹配的host
     public Host host = null;
+
+    //最新的版本
     public Context context = null;
+
+    //context里面斜杠的个数
     public int contextSlashCount = 0;
+
+    //所有的结果:主要用于多版本部署的场景
     public Context[] contexts = null;
+
+    //匹配的Wrapper
     public Wrapper wrapper = null;
+
+    //对于JspServlet,他对应的匹配的pattern是否包含通配符
     public boolean jspWildCard = false;
 
     public final MessageBytes contextPath = MessageBytes.newInstance();

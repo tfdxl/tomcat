@@ -16,28 +16,19 @@
  */
 package org.apache.catalina.mapper;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
-
-import javax.servlet.http.MappingMatch;
-
-import org.apache.catalina.Context;
-import org.apache.catalina.Host;
-import org.apache.catalina.WebResource;
-import org.apache.catalina.WebResourceRoot;
-import org.apache.catalina.Wrapper;
+import org.apache.catalina.*;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.apache.tomcat.util.buf.Ascii;
 import org.apache.tomcat.util.buf.CharChunk;
 import org.apache.tomcat.util.buf.MessageBytes;
 import org.apache.tomcat.util.res.StringManager;
+
+import javax.servlet.http.MappingMatch;
+import java.io.IOException;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Mapper, which implements the servlet API mapping rules (which are derived
@@ -1563,6 +1554,11 @@ public final class Mapper {
     // ------------------------------------------------- MapElement Inner Class
 
 
+    /**
+     * 已经映射的元素
+     *
+     * @param <T>
+     */
     protected abstract static class MapElement<T> {
 
         public final String name;
