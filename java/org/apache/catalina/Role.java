@@ -38,7 +38,7 @@ public interface Role extends Principal {
     /**
      * @return the description of this role.
      */
-    public String getDescription();
+    String getDescription();
 
 
     /**
@@ -46,14 +46,14 @@ public interface Role extends Principal {
      *
      * @param description The new description
      */
-    public void setDescription(String description);
+    void setDescription(String description);
 
 
     /**
      * @return the role name of this role, which must be unique
      * within the scope of a {@link UserDatabase}.
      */
-    public String getRolename();
+    String getRolename();
 
 
     /**
@@ -62,13 +62,13 @@ public interface Role extends Principal {
      *
      * @param rolename The new role name
      */
-    public void setRolename(String rolename);
+    void setRolename(String rolename);
 
 
     /**
      * @return the {@link UserDatabase} within which this Role is defined.
      */
-    public UserDatabase getUserDatabase();
+    UserDatabase getUserDatabase();
 
 
 }
