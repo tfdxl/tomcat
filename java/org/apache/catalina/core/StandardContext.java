@@ -4818,8 +4818,9 @@ public class StandardContext extends ContainerBase
             log.debug("Starting " + getBaseName());
 
         // Send j2ee.state.starting notification
+        // 发送一个什么烂通知
         if (this.getObjectName() != null) {
-            Notification notification = new Notification("j2ee.state.starting",
+            final Notification notification = new Notification("j2ee.state.starting",
                     this.getObjectName(), sequenceNumber.getAndIncrement());
             broadcaster.sendNotification(notification);
         }
