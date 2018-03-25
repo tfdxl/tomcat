@@ -762,6 +762,9 @@ public final class Mapper {
                 }
             }
         }
+
+
+        //更新
         mappingData.host = mappedHost.object;
 
         if (uri.isNull()) {
@@ -781,7 +784,7 @@ public final class Mapper {
 
         int lastSlash = -1;
         int uriEnd = uri.getEnd();
-        int length = -1;
+        int length;
         boolean found = false;
         MappedContext context = null;
         while (pos >= 0) {
