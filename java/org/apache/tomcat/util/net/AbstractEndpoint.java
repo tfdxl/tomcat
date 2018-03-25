@@ -1201,12 +1201,14 @@ public abstract class AbstractEndpoint<S, U> {
 
 
     protected final void startAcceptorThreads() {
+
+        //Acceptor线程的数量
         int count = getAcceptorThreadCount();
         acceptors = new ArrayList<>(count);
 
         for (int i = 0; i < count; i++) {
             Acceptor<U> acceptor = new Acceptor<>(this);
-            String threadName = getName() + "-Acceptor-" + i;
+            final String threadName = getName() + "-Acceptor-" + i;
             acceptor.setThreadName(threadName);
             acceptors.add(acceptor);
             Thread t = new Thread(acceptor, threadName);
