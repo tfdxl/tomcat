@@ -97,7 +97,6 @@ public class CoyoteAdapter implements Adapter {
 
         super();
         this.connector = connector;
-
     }
 
 

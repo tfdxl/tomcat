@@ -190,9 +190,9 @@ public class StandardManager extends ManagerBase {
         if (log.isDebugEnabled()) {
             log.debug(sm.getString("standardManager.loading", pathname));
         }
-        Loader loader = null;
+        Loader loader;
         ClassLoader classLoader = null;
-        Log logger = null;
+        Log logger;
         try (FileInputStream fis = new FileInputStream(file.getAbsolutePath());
              BufferedInputStream bis = new BufferedInputStream(fis)) {
             Context c = getContext();
