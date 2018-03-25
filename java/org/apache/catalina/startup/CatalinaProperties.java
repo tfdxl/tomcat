@@ -41,6 +41,7 @@ public class CatalinaProperties {
 
 
     static {
+        //加载他妈的烂属性文件
         loadProperties();
     }
 
@@ -90,7 +91,7 @@ public class CatalinaProperties {
         if (is == null) {
             try {
                 is = CatalinaProperties.class.getResourceAsStream
-                    ("/org/apache/catalina/startup/catalina.properties");
+                        ("/org/apache/catalina/startup/catalina.properties");
             } catch (Throwable t) {
                 handleThrowable(t);
             }
@@ -98,6 +99,7 @@ public class CatalinaProperties {
 
         if (is != null) {
             try {
+                //加载属性
                 properties = new Properties();
                 properties.load(is);
             } catch (Throwable t) {
@@ -119,6 +121,7 @@ public class CatalinaProperties {
             properties = new Properties();
         }
 
+        //设置为系统属性
         // Register the properties as system properties
         Enumeration<?> enumeration = properties.propertyNames();
         while (enumeration.hasMoreElements()) {
