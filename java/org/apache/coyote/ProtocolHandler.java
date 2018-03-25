@@ -24,7 +24,7 @@ import org.apache.tomcat.util.net.SSLHostConfig;
  * Abstract the protocol implementation, including threading, etc.
  * Processor is single threaded and specific to stream-based protocols,
  * will not fit Jk protocols like JNI.
- *
+ * <p>
  * This is the main interface to be implemented by a coyote connector.
  * Adapter is the main interface to be implemented by a coyote servlet
  * container.
@@ -40,8 +40,9 @@ public interface ProtocolHandler {
      *
      * @param adapter The adapter to associate
      */
-    public void setAdapter(Adapter adapter);
-    public Adapter getAdapter();
+    void setAdapter(Adapter adapter);
+
+    Adapter getAdapter();
 
 
     /**
@@ -49,7 +50,7 @@ public interface ProtocolHandler {
      *
      * @return The executor used to process requests
      */
-    public Executor getExecutor();
+    Executor getExecutor();
 
 
     /**
@@ -57,7 +58,7 @@ public interface ProtocolHandler {
      *
      * @throws Exception If the protocol handler fails to initialise
      */
-    public void init() throws Exception;
+    void init() throws Exception;
 
 
     /**
@@ -65,7 +66,7 @@ public interface ProtocolHandler {
      *
      * @throws Exception If the protocol handler fails to start
      */
-    public void start() throws Exception;
+    void start() throws Exception;
 
 
     /**
@@ -73,7 +74,7 @@ public interface ProtocolHandler {
      *
      * @throws Exception If the protocol handler fails to pause
      */
-    public void pause() throws Exception;
+    void pause() throws Exception;
 
 
     /**
@@ -81,7 +82,7 @@ public interface ProtocolHandler {
      *
      * @throws Exception If the protocol handler fails to resume
      */
-    public void resume() throws Exception;
+    void resume() throws Exception;
 
 
     /**
@@ -89,7 +90,7 @@ public interface ProtocolHandler {
      *
      * @throws Exception If the protocol handler fails to stop
      */
-    public void stop() throws Exception;
+    void stop() throws Exception;
 
 
     /**
@@ -97,31 +98,33 @@ public interface ProtocolHandler {
      *
      * @throws Exception If the protocol handler fails to destroy
      */
-    public void destroy() throws Exception;
+    void destroy() throws Exception;
 
 
     /**
      * Requires APR/native library
      *
      * @return <code>true</code> if this Protocol Handler requires the
-     *         APR/native library, otherwise <code>false</code>
+     * APR/native library, otherwise <code>false</code>
      */
-    public boolean isAprRequired();
+    boolean isAprRequired();
 
 
     /**
      * Does this ProtocolHandler support sendfile?
      *
      * @return <code>true</code> if this Protocol Handler supports sendfile,
-     *         otherwise <code>false</code>
+     * otherwise <code>false</code>
      */
-    public boolean isSendfileSupported();
+    boolean isSendfileSupported();
 
 
-    public void addSslHostConfig(SSLHostConfig sslHostConfig);
-    public SSLHostConfig[] findSslHostConfigs();
+    void addSslHostConfig(SSLHostConfig sslHostConfig);
+
+    SSLHostConfig[] findSslHostConfigs();
 
 
-    public void addUpgradeProtocol(UpgradeProtocol upgradeProtocol);
-    public UpgradeProtocol[] findUpgradeProtocols();
+    void addUpgradeProtocol(UpgradeProtocol upgradeProtocol);
+
+    UpgradeProtocol[] findUpgradeProtocols();
 }
