@@ -322,6 +322,7 @@ public class CoyoteAdapter implements Adapter {
         try {
             // Parse and set Catalina and configuration specific
             // request parameters
+            //请求的参数解析
             postParseSuccess = postParseRequest(req, request, res, response);
             if (postParseSuccess) {
                 //check valves if we support async
@@ -331,8 +332,11 @@ public class CoyoteAdapter implements Adapter {
                 connector.getService().getContainer().getPipeline().getFirst().invoke(
                         request, response);
             }
+
+            //异步的请求:
             if (request.isAsync()) {
                 async = true;
+                //获取请求读取事件监听器
                 ReadListener readListener = req.getReadListener();
                 if (readListener != null && request.isFinished()) {
                     // Possible the all data may have been read during service()
@@ -358,6 +362,7 @@ public class CoyoteAdapter implements Adapter {
                     request.getAsyncContextInternal().setErrorState(throwable, true);
                 }
             } else {
+                //同步请求:flush并且关闭请求输入和输出流
                 request.finishRequest();
                 response.finishResponse();
             }
