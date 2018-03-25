@@ -30,8 +30,11 @@ public class SynchronizedQueue<T> {
     public static final int DEFAULT_SIZE = 128;
 
     private Object[] queue;
+
     private int size;
+
     private int insert = 0;
+
     private int remove = 0;
 
     public SynchronizedQueue() {

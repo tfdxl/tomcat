@@ -16,13 +16,13 @@
  */
 package org.apache.coyote;
 
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
 import org.apache.tomcat.util.net.AbstractEndpoint.Handler.SocketState;
 import org.apache.tomcat.util.net.SSLSupport;
 import org.apache.tomcat.util.net.SocketEvent;
 import org.apache.tomcat.util.net.SocketWrapperBase;
+
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
 /**
  * Common interface for processors of all protocols.
@@ -35,14 +35,12 @@ public interface Processor {
      * not currently being processed.
      *
      * @param socketWrapper The connection to process
-     * @param status The status of the connection that triggered this additional
-     *               processing
-     *
+     * @param status        The status of the connection that triggered this additional
+     *                      processing
      * @return The state the caller should put the socket in when this method
-     *         returns
-     *
+     * returns
      * @throws IOException If an I/O error occurs during the processing of the
-     *         request
+     *                     request
      */
     SocketState process(SocketWrapperBase<?> socketWrapper, SocketEvent status) throws IOException;
 
@@ -50,18 +48,18 @@ public interface Processor {
      * Generate an upgrade token.
      *
      * @return An upgrade token encapsulating the information required to
-     *         process the upgrade request
-     *
+     * process the upgrade request
      * @throws IllegalStateException if this is called on a Processor that does
-     *         not support upgrading
+     *                               not support upgrading
      */
     UpgradeToken getUpgradeToken();
 
     /**
      * @return {@code true} if the Processor is currently processing an upgrade
-     *         request, otherwise {@code false}
+     * request, otherwise {@code false}
      */
     boolean isUpgrade();
+
     boolean isAsync();
 
     /**
@@ -97,9 +95,8 @@ public interface Processor {
      * Allows retrieving additional input during the upgrade process.
      *
      * @return leftover bytes
-     *
      * @throws IllegalStateException if this is called on a Processor that does
-     *         not support upgrading
+     *                               not support upgrading
      */
     ByteBuffer getLeftoverInput();
 

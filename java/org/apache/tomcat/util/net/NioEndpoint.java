@@ -613,7 +613,7 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel, SocketChannel>
         public boolean events() {
             boolean result = false;
 
-            PollerEvent pe = null;
+            PollerEvent pe;
             for (int i = 0, size = events.size(); i < size && (pe = events.poll()) != null; i++) {
                 result = true;
                 try {

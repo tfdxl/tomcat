@@ -17,10 +17,10 @@
 
 package org.apache.coyote;
 
-import javax.servlet.http.HttpUpgradeHandler;
-
 import org.apache.tomcat.ContextBind;
 import org.apache.tomcat.InstanceManager;
+
+import javax.servlet.http.HttpUpgradeHandler;
 
 /**
  * Token used during the upgrade process.
@@ -32,7 +32,7 @@ public final class UpgradeToken {
     private final InstanceManager instanceManager;
 
     public UpgradeToken(HttpUpgradeHandler httpUpgradeHandler,
-            ContextBind contextBind, InstanceManager instanceManager) {
+                        ContextBind contextBind, InstanceManager instanceManager) {
         this.contextBind = contextBind;
         this.httpUpgradeHandler = httpUpgradeHandler;
         this.instanceManager = instanceManager;
