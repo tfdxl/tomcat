@@ -197,6 +197,7 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel, SocketChannel>
             return 0;
         } else {
             int sum = 0;
+            //把poller的合并
             for (int i = 0; i < pollers.length; i++) {
                 sum += pollers[i].getKeyCount();
             }
@@ -1439,7 +1440,7 @@ public class NioEndpoint extends AbstractJsseEndpoint<NioChannel, SocketChannel>
                     handshake = -1;
                 }
                 if (handshake == 0) {
-                    SocketState state = SocketState.OPEN;
+                    SocketState state;
                     // Process the request from this socket
                     if (event == null) {
                         state = getHandler().process(socketWrapper, SocketEvent.OPEN_READ);
