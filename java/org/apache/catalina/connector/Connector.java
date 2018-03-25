@@ -16,15 +16,6 @@
  */
 package org.apache.catalina.connector;
 
-import java.io.UnsupportedEncodingException;
-import java.net.InetAddress;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.HashSet;
-
-import javax.management.ObjectName;
-
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.LifecycleState;
 import org.apache.catalina.Service;
@@ -42,6 +33,14 @@ import org.apache.tomcat.util.buf.B2CConverter;
 import org.apache.tomcat.util.net.SSLHostConfig;
 import org.apache.tomcat.util.net.openssl.OpenSSLImplementation;
 import org.apache.tomcat.util.res.StringManager;
+
+import javax.management.ObjectName;
+import java.io.UnsupportedEncodingException;
+import java.net.InetAddress;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.HashSet;
 
 
 /**
@@ -79,6 +78,7 @@ public class Connector extends LifecycleMBeanBase {
         boolean aprConnector = AprLifecycleListener.isAprAvailable() &&
                 AprLifecycleListener.getUseAprConnector();
 
+        //会初始化协议处理器
         if ("HTTP/1.1".equals(protocol) || protocol == null) {
             if (aprConnector) {
                 protocolHandlerClassName = "org.apache.coyote.http11.Http11AprProtocol";
@@ -98,6 +98,8 @@ public class Connector extends LifecycleMBeanBase {
         // Instantiate protocol handler
         ProtocolHandler p = null;
         try {
+
+            //他妈的用到了反射
             Class<?> clazz = Class.forName(protocolHandlerClassName);
             p = (ProtocolHandler) clazz.getConstructor().newInstance();
         } catch (Exception e) {

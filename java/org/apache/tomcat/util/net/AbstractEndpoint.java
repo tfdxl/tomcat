@@ -1145,7 +1145,7 @@ public abstract class AbstractEndpoint<S, U> {
 
 
     private void registerJmx(SSLHostConfig sslHostConfig) {
-        ObjectName sslOname = null;
+        ObjectName sslOname;
         try {
             sslOname = new ObjectName(domain + ":type=SSLHostConfig,ThreadPool=\"" +
                     getName() + "\",name=" + ObjectName.quote(sslHostConfig.getHostName()));
