@@ -40,25 +40,25 @@ public interface UserDatabase {
     /**
      * @return the set of {@link Group}s defined in this user database.
      */
-    public Iterator<Group> getGroups();
+    Iterator<Group> getGroups();
 
 
     /**
      * @return the unique global identifier of this user database.
      */
-    public String getId();
+    String getId();
 
 
     /**
      * @return the set of {@link Role}s defined in this user database.
      */
-    public Iterator<Role> getRoles();
+    Iterator<Role> getRoles();
 
 
     /**
      * @return the set of {@link User}s defined in this user database.
      */
-    public Iterator<User> getUsers();
+    Iterator<User> getUsers();
 
 
     // --------------------------------------------------------- Public Methods
@@ -67,29 +67,29 @@ public interface UserDatabase {
     /**
      * Finalize access to this user database.
      *
-     * @exception Exception if any exception is thrown during closing
+     * @throws Exception if any exception is thrown during closing
      */
-    public void close() throws Exception;
+    void close() throws Exception;
 
 
     /**
      * Create and return a new {@link Group} defined in this user database.
      *
-     * @param groupname The group name of the new group (must be unique)
+     * @param groupname   The group name of the new group (must be unique)
      * @param description The description of this group
      * @return The new group
      */
-    public Group createGroup(String groupname, String description);
+    Group createGroup(String groupname, String description);
 
 
     /**
      * Create and return a new {@link Role} defined in this user database.
      *
-     * @param rolename The role name of the new role (must be unique)
+     * @param rolename    The role name of the new role (must be unique)
      * @param description The description of this role
      * @return The new role
      */
-    public Role createRole(String rolename, String description);
+    Role createRole(String rolename, String description);
 
 
     /**
@@ -100,43 +100,40 @@ public interface UserDatabase {
      * @param fullName The full name of the new user
      * @return The new user
      */
-    public User createUser(String username, String password,
-                           String fullName);
+    User createUser(String username, String password,
+                    String fullName);
 
 
     /**
+     * @param groupname Name of the group to return
      * @return the {@link Group} with the specified group name, if any;
      * otherwise return <code>null</code>.
-     *
-     * @param groupname Name of the group to return
      */
-    public Group findGroup(String groupname);
+    Group findGroup(String groupname);
 
 
     /**
+     * @param rolename Name of the role to return
      * @return the {@link Role} with the specified role name, if any;
      * otherwise return <code>null</code>.
-     *
-     * @param rolename Name of the role to return
      */
-    public Role findRole(String rolename);
+    Role findRole(String rolename);
 
 
     /**
+     * @param username Name of the user to return
      * @return the {@link User} with the specified user name, if any;
      * otherwise return <code>null</code>.
-     *
-     * @param username Name of the user to return
      */
-    public User findUser(String username);
+    User findUser(String username);
 
 
     /**
      * Initialize access to this user database.
      *
-     * @exception Exception if any exception is thrown during opening
+     * @throws Exception if any exception is thrown during opening
      */
-    public void open() throws Exception;
+    void open() throws Exception;
 
 
     /**
@@ -144,7 +141,7 @@ public interface UserDatabase {
      *
      * @param group The group to be removed
      */
-    public void removeGroup(Group group);
+    void removeGroup(Group group);
 
 
     /**
@@ -152,7 +149,7 @@ public interface UserDatabase {
      *
      * @param role The role to be removed
      */
-    public void removeRole(Role role);
+    void removeRole(Role role);
 
 
     /**
@@ -160,16 +157,16 @@ public interface UserDatabase {
      *
      * @param user The user to be removed
      */
-    public void removeUser(User user);
+    void removeUser(User user);
 
 
     /**
      * Save any updated information to the persistent storage location for
      * this user database.
      *
-     * @exception Exception if any exception is thrown during saving
+     * @throws Exception if any exception is thrown during saving
      */
-    public void save() throws Exception;
+    void save() throws Exception;
 
 
 }
