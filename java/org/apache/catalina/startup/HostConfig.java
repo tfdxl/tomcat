@@ -144,6 +144,7 @@ public class HostConfig implements LifecycleListener {
 
 
     /**
+     * web应用列表
      * List of applications which are being serviced, and shouldn't be
      * deployed/undeployed/redeployed at the moment.
      */
