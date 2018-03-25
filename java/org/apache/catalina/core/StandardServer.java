@@ -477,7 +477,7 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
                         expected += (random.nextInt() % 1024);
                     }
                     while (expected > 0) {
-                        int ch = -1;
+                        int ch;
                         try {
                             ch = stream.read();
                         } catch (IOException e) {
