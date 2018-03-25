@@ -16,17 +16,17 @@
  */
 package org.apache.catalina.webresources;
 
+import org.apache.catalina.WebResource;
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
+import org.apache.tomcat.util.res.StringManager;
+
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicLong;
-
-import org.apache.catalina.WebResource;
-import org.apache.juli.logging.Log;
-import org.apache.juli.logging.LogFactory;
-import org.apache.tomcat.util.res.StringManager;
 
 public class Cache {
 
@@ -44,12 +44,12 @@ public class Cache {
 
     private long ttl = 5000;
     private long maxSize = 10 * 1024 * 1024;
-    private int objectMaxSize = (int) maxSize/OBJECT_MAX_SIZE_FACTOR;
+    private int objectMaxSize = (int) maxSize / OBJECT_MAX_SIZE_FACTOR;
 
     private AtomicLong lookupCount = new AtomicLong(0);
     private AtomicLong hitCount = new AtomicLong(0);
 
-    private final ConcurrentMap<String,CachedResource> resourceCache =
+    private final ConcurrentMap<String, CachedResource> resourceCache =
             new ConcurrentHashMap<>();
 
     public Cache(StandardRoot root) {
@@ -294,7 +294,7 @@ public class Cache {
         }
         if (objectMaxSize > limit) {
             log.warn(sm.getString("cache.objectMaxSizeTooBig",
-                    Integer.valueOf(objectMaxSize / 1024), Integer.valueOf((int)limit / 1024)));
+                    Integer.valueOf(objectMaxSize / 1024), Integer.valueOf((int) limit / 1024)));
             objectMaxSize = (int) limit;
         }
     }
