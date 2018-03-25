@@ -684,6 +684,7 @@ public final class Mapper {
     public void map(MessageBytes host, MessageBytes uri, String version,
                     MappingData mappingData) throws IOException {
 
+        //如果没有指定host名称,那么使用默认的host名称
         if (host.isNull()) {
             host.getCharChunk().append(defaultHostName);
         }
@@ -737,6 +738,8 @@ public final class Mapper {
 
         // Virtual host mapping
         MappedHost[] hosts = this.hosts;
+
+        //按照host名称,精确查找Mappedhost
         MappedHost mappedHost = exactFindIgnoreCase(hosts, host);
         if (mappedHost == null) {
             // Note: Internally, the Mapper does not use the leading * on a
@@ -1260,7 +1263,7 @@ public final class Mapper {
             return 0;
         }
 
-        int i = 0;
+        int i;
         while (true) {
             i = (b + a) >>> 1;
             int result = compareIgnoreCase(name, start, end, map[i].name);
@@ -1565,6 +1568,7 @@ public final class Mapper {
         public final T object;
 
         public MapElement(String name, T object) {
+
             this.name = name;
             this.object = object;
         }
